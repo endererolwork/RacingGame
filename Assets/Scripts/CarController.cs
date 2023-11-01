@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Utilities;
 
 
 namespace Race
 {
+    [System.Serializable]
     public class AxleInfo
     {
         public WheelCollider leftWheel;
@@ -16,10 +17,11 @@ namespace Race
         public WheelFrictionCurve originalForwardFriction;
         public WheelFrictionCurve originalSidewaysFriction;
     }
+    
     public class CarController : MonoBehaviour
     {
-        [Header("Axle Information")] [SerializeField]
-        private AxleInfo[] axleInfos;
+        [Header("Axle Information")] 
+        [SerializeField] AxleInfo[] axleInfos;
 
         [Header("Motor Attributes")] 
         [SerializeField]  float maxMotorTorque = 3000f;
@@ -27,7 +29,11 @@ namespace Race
 
         [Header("Steering Attributes")] 
         [SerializeField]  float maxSteeringAngle = 30f;
+
+        [Header("Braking and Drifting Attributes")] 
+        [SerializeField]  float brakeTorque = 10000f;
         
+        private float brakeVelocity;
         
 
         [SerializeField]  InputReader input;
@@ -65,6 +71,22 @@ namespace Race
                  HandleBreaksAndDrift(axleInfo);
                  UpdateWheelVisiuals(axleInfo.leftWheel);
                  UpdateWheelVisiuals(axleInfo.rightWheel);
+             }
+         }
+
+         private void UpdateWheelVisiuals(WheelCollider collider)
+         {
+             if (collider.transform.childCount == 0) return;
+             {
+                 Transform visualWheel = collider.transform.GetChild(0);
+
+                 Vector3 position;
+                 Quaternion rotation;
+                 
+                 collider.GetWorldPose(out position, out rotation);
+
+                 visualWheel.transform.position = position;
+                 visualWheel.transform.rotation = rotation;
              }
          }
 
