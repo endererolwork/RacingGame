@@ -33,26 +33,22 @@ namespace Race
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            throw new System.NotImplementedException();
-            //noop
+         
         }
 
         public void OnLook(InputAction.CallbackContext context)
         {
-            throw new System.NotImplementedException();
-            //noop
+           
         }
 
         public void OnFire(InputAction.CallbackContext context)
         {
-            throw new System.NotImplementedException();
-            //noop
+            
         }
 
         public void OnBrake(InputAction.CallbackContext context)
         {
-            throw new System.NotImplementedException();
-            //noop
+            
         }
     } 
     
