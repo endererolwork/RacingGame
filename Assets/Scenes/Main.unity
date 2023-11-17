@@ -1682,6 +1682,7 @@ Transform:
   m_Children:
   - {fileID: 1705885741}
   - {fileID: 1012378106}
+  - {fileID: 1884326031}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &725717436
@@ -1705,11 +1706,44 @@ MonoBehaviour:
     rightWheel: {fileID: 540453045}
     motor: 1
     steering: 0
-  maxMotorTorque: 30000
+  maxMotorTorque: 10000
   maxSpeed: 100
   maxSteeringAngle: 30
+  turnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  turnStrength: 1500
+  driftSteeringMultiplier: 1.5
   brakeTorque: 10000
+  centerOfMass: {fileID: 1884326031}
+  downForce: 100
+  gravity: -9.81
+  lateralGScale: 10
+  maxBankAngle: 5
+  bankSpeed: 2
   input: {fileID: 11400000, guid: 1f883aa5062455a40a3037563438d80a, type: 2}
+  IsGrounded: 1
 --- !u!65 &725717437
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3732,6 +3766,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 517d0cc4a629ca24ea2d21b3a5843ef0, type: 3}
   m_PrefabInstance: {fileID: 1705885740}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1884326030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1884326031}
+  m_Layer: 0
+  m_Name: CenterOfMass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1884326031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884326030}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 725717435}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1999081476
 PrefabInstance:
   m_ObjectHideFlags: 0
