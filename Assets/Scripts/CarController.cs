@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.LowLevel;
 using Utilities;
 
 
@@ -214,6 +216,8 @@ namespace Race
 
                     axleInfo.leftWheel.brakeTorque = 0;
                     axleInfo.rightWheel.brakeTorque = 0;
+                    ApplyDriftFriction(axleInfo.leftWheel);
+                    ApplyDriftFriction(axleInfo.rightWheel);
                 }
                 else
                 {
@@ -221,8 +225,40 @@ namespace Race
 
                     axleInfo.leftWheel.brakeTorque = 0;
                     axleInfo.rightWheel.brakeTorque = 0;
+                    ResetDriftFriction(axleInfo.leftWheel);
+                    ResetDriftFriction(axleInfo.rightWheel);
                 }
             }
+        }
+
+        private void ResetDriftFriction(WheelCollider wheel)
+        {
+            AxleInfo axleInfo = axleInfos.FirstOrDefault(axle => axle.leftWheel == wheel || axle.rightWheel
+                == wheel);
+
+            if (axleInfo == null) return;
+
+            wheel.forwardFriction = axleInfo.originalForwardFriction;
+            wheel.sidewaysFriction = axleInfo.originalSidewaysFriction;
+
+        }
+
+        private void ApplyDriftFriction(WheelCollider wheel)
+        {
+            if (wheel.GetGroundHit(out var hit))
+            {
+                wheel.forwardFriction = UpdateFriction(wheel.forwardFriction);
+            }
+        }
+
+        WheelFrictionCurve UpdateFriction(WheelFrictionCurve wheelForwardFriction)
+        {
+            wheelForwardFriction.stiffness = input.IsBraking
+                ? Mathf.SmoothDamp(
+                    wheelForwardFriction.stiffness, .5f, ref
+                    driftVelocity, Time.deltaTime)
+                : 1f;
+            return wheelForwardFriction;
         }
 
         float AdjustInput(float input)

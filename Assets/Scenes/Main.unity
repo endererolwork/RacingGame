@@ -686,6 +686,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 204805183}
     - target: {fileID: 8273594838609989871, guid: 4cbf14e86735448488d8ff8704f9167e, type: 3}
+      propertyPath: m_VersionIndex
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273594838609989871, guid: 4cbf14e86735448488d8ff8704f9167e, type: 3}
       propertyPath: m_Tangents.Array.data[125].x
       value: NaN
       objectReference: {fileID: 0}
@@ -1713,8 +1717,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
+      time: 0.00812912
+      value: 0.8514099
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -1722,8 +1726,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.8048706
+      value: 0.36792374
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1893,6 +1897,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 204805183}
+    - target: {fileID: 8273594838609989871, guid: 4cbf14e86735448488d8ff8704f9167e, type: 3}
+      propertyPath: m_VersionIndex
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8273594838609989871, guid: 4cbf14e86735448488d8ff8704f9167e, type: 3}
       propertyPath: m_Tangents.Array.data[125].x
       value: NaN
@@ -2870,6 +2878,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 304529183}
+    - target: {fileID: 3231128730054425217, guid: ffe444df3fc112740b26fa9f9b61ccb8, type: 3}
+      propertyPath: m_VersionIndex
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 3231128730054425217, guid: ffe444df3fc112740b26fa9f9b61ccb8, type: 3}
       propertyPath: m_Tangents.Array.data[125].x
       value: NaN
@@ -3966,6 +3978,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 304529183}
+    - target: {fileID: 3231128730054425217, guid: ffe444df3fc112740b26fa9f9b61ccb8, type: 3}
+      propertyPath: m_VersionIndex
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 3231128730054425217, guid: ffe444df3fc112740b26fa9f9b61ccb8, type: 3}
       propertyPath: m_Tangents.Array.data[125].x
       value: NaN

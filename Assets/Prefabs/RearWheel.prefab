@@ -62,9 +62,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4993019282047965429, guid: da25264065e4bae45a940b4782ae3006, type: 3}
-  - {fileID: -2241172287289250686, guid: da25264065e4bae45a940b4782ae3006, type: 3}
-  - {fileID: 3773406967507542978, guid: da25264065e4bae45a940b4782ae3006, type: 3}
+  - {fileID: 4952235634367160369, guid: fcec89af92a9bc54bb2e83ed74eea2e8, type: 3}
+  - {fileID: -6358977136511186556, guid: fcec89af92a9bc54bb2e83ed74eea2e8, type: 3}
+  - {fileID: 3426260191361309295, guid: fcec89af92a9bc54bb2e83ed74eea2e8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,7 +77,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -7746,7 +7746,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 16
+  m_VersionIndex: 19
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
