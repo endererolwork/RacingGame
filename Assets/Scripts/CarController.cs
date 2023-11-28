@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +49,8 @@ namespace Race
         [SerializeField] private float bankSpeed = 2f;
 
         [Header("References")] [SerializeField]
-        InputReader input;
+        private InputReader playerInput;
+        IDrive input;
 
         Rigidbody rb;
 
@@ -67,6 +67,20 @@ namespace Race
         public bool IsGrounded = true;
         public Vector3 Velocity => kartVelocity;
         public float MaxSpeed => maxSpeed;
+
+        private void Awake()
+        {
+            if (playerInput is IDrive driveInput)
+            {
+                input = driveInput;
+            }
+            else
+            {
+                Debug.Log("Using AI Input System");
+                var aiInput = gameObject.GetOrAdd<AIInput>();
+                input = aiInput;
+            }
+        }
 
 
         void Start()
