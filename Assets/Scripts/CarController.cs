@@ -50,8 +50,10 @@ namespace Race
 
         [Header("References")] [SerializeField]
         private InputReader playerInput;
+        [SerializeField] private Circuit circuit;
+        [SerializeField] private AIDriverData driverdata;
+        
         IDrive input;
-
         Rigidbody rb;
 
         private float brakeVelocity;
@@ -74,12 +76,11 @@ namespace Race
             {
                 input = driveInput;
             }
-            else
-            {
-                Debug.Log("Using AI Input System");
-                var aiInput = gameObject.GetOrAdd<AIInput>();
-                input = aiInput;
-            }
+        }
+
+        public void SetInput(IDrive input)
+        {
+            this.input = input;
         }
 
 

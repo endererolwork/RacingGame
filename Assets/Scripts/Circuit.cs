@@ -2,7 +2,7 @@
 
 namespace Race
 {
-    [CreateAssetMenu(fileName = "CircuitData", menuName = "Kart/CircuitData")]
+    [CreateAssetMenu(fileName = "CircuitData", menuName = "Race/CircuitData")]
     public class Circuit : ScriptableObject {
         public Transform[] waypoints;
         public Transform[] spawnPoints;

@@ -2,7 +2,7 @@
 
 namespace Race
 {
-    [CreateAssetMenu(fileName = "AIDriverData", menuName = "Kart/AIDriverData")]
+    [CreateAssetMenu(fileName = "AIDriverData", menuName = "Race/AIDriverData")]
     public class AIDriverData : ScriptableObject
     {
         public float proximityThreshold = 20f;  // threshold for how close are we

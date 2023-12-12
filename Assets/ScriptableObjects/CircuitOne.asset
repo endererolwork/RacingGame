@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5ffb480d034359a6ab5222d9da6021, type: 3}
+  m_Name: CircuitOne
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 4419551913898184855, guid: 3fa42dab683ee814381788c0e50852ba, type: 3}
+  - {fileID: 995300974583934710, guid: 9eb9e04a19bdb6145ac3ab698d322acf, type: 3}
+  - {fileID: 3144333424483187566, guid: 41071ef24b497544f9697b0381c01a35, type: 3}
+  - {fileID: 2379035396388825363, guid: 9ede5508be8dc5f42b45811d3b6bbace, type: 3}
+  spawnPoints:
+  - {fileID: 8465603275262959367, guid: cca3811be4dc08f4e9328e9c5be74fc5, type: 3}
+  - {fileID: 5347033891790061122, guid: 633ad278545f2484a9cd84f9b327bc95, type: 3}
+  - {fileID: 101417948231485243, guid: f7e475252be2e1e4caed6f23fc5f1b1e, type: 3}
