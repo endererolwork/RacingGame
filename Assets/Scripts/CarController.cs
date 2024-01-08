@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.LowLevel;
 using Utilities;
@@ -19,7 +21,7 @@ namespace Race
         public WheelFrictionCurve originalSidewaysFriction;
     }
 
-    public class CarController : MonoBehaviour
+    public class CarController : NetworkBehaviour
     {
         [Header("Axle Information")] [SerializeField]
         AxleInfo[] axleInfos;
@@ -52,6 +54,8 @@ namespace Race
         private InputReader playerInput;
         [SerializeField] private Circuit circuit;
         [SerializeField] private AIDriverData driverdata;
+        [SerializeField] private CinemachineVirtualCamera playerCamera;
+        [SerializeField] private AudioListener playerAudioListener;
         
         IDrive input;
         Rigidbody rb;
@@ -76,16 +80,7 @@ namespace Race
             {
                 input = driveInput;
             }
-        }
-
-        public void SetInput(IDrive input)
-        {
-            this.input = input;
-        }
-
-
-        void Start()
-        {
+            
             rb = GetComponent<Rigidbody>();
             input.Enable();
 
@@ -97,6 +92,27 @@ namespace Race
                 axleInfo.originalForwardFriction = axleInfo.leftWheel.forwardFriction;
                 axleInfo.originalSidewaysFriction = axleInfo.leftWheel.sidewaysFriction;
             }
+        }
+
+        public void SetInput(IDrive input)
+        {
+            this.input = input;
+        }
+
+
+        public override void OnNetworkSpawn()
+        {
+            if (!IsOwner)
+            {
+                playerAudioListener.enabled = false;
+                playerCamera.Priority = 0;
+                return;
+            }
+
+            playerCamera.Priority = 100;
+            playerAudioListener.enabled = true;
+            
+           
         }
 
         private void FixedUpdate()
