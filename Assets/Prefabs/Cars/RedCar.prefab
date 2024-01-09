@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 6122676100925884902}
   m_Layer: 0
   m_Name: RedCar
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  turnStrength: 1500
+  turnStrength: 600
   driftSteeringMultiplier: 1.5
   brakeTorque: 10000
   centerOfMass: {fileID: 515291807473944895}
@@ -434,7 +434,6 @@ MonoBehaviour:
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
 --- !u!114 &6533999401571702847
