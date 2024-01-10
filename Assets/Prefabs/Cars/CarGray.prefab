@@ -397,7 +397,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  turnStrength: 550
+  turnStrength: 500
   driftSteeringMultiplier: 1.5
   brakeTorque: 10000
   centerOfMass: {fileID: 3198019812812463738}
@@ -412,6 +412,16 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   playerAudioListener: {fileID: 0}
   IsGrounded: 1
+  reconciliationCooldownTime: 1
+  reconciliationThreshold: 10
+  serverCube: {fileID: 0}
+  clientCube: {fileID: 0}
+  extrapolationLimit: 0.5
+  extrapolationMultiplier: 1.2
+  networkText: {fileID: 0}
+  playerText: {fileID: 0}
+  serverRpcText: {fileID: 0}
+  clientRpcText: {fileID: 0}
 --- !u!65 &9218677469221057177
 BoxCollider:
   m_ObjectHideFlags: 0
