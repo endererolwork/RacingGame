@@ -8,6 +8,7 @@ using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.LowLevel;
+using UnityEngine.UI;
 using Utilities;
 
 
@@ -146,6 +147,8 @@ namespace Race
         [SerializeField] TextMeshPro serverRpcText;
         [SerializeField] TextMeshPro clientRpcText;
 
+
+        [SerializeField] Button startRaceButton;
         private void Awake()
         {
             if (playerInput is IDrive driveInput)
@@ -179,14 +182,14 @@ namespace Race
                 extrapolationTimer.Stop();
             };
             
-            extrapolationTimer.OnTimerStart += () => {
+            /*extrapolationTimer.OnTimerStart += () => {
                 reconciliationTimer.Stop();
                 SwitchAuthorityMode(AuthorityMode.Server);
             };
             extrapolationTimer.OnTimerStop += () => {
                 extrapolationState = default;
                 SwitchAuthorityMode(AuthorityMode.Client);
-            };
+            };*/
             
         }
         
@@ -206,6 +209,7 @@ namespace Race
 
         public override void OnNetworkSpawn()
         {
+
             if (!IsOwner)
             {
                 playerAudioListener.enabled = false;
@@ -219,16 +223,16 @@ namespace Race
             playerCamera.Priority = 100;
             playerAudioListener.enabled = true;
         }
-        
+        public Transform tra;
         void Update() {
             networkTimer.Update(Time.deltaTime);
             reconciliationTimer.Tick(Time.deltaTime);
             extrapolationTimer.Tick(Time.deltaTime);
-            Extraplolate();
+            //Extraplolate();
 
            // playerText.SetText($"Owner: {IsOwner} NetworkObjectId: {NetworkObjectId} Velocity: {kartVelocity.magnitude:F1}");
             if (Input.GetKeyDown(KeyCode.Q)) {
-                transform.position += transform.forward * 20f;
+                //transform.position += transform.forward * 20f;
             }
         }
 
@@ -239,7 +243,7 @@ namespace Race
                 HandleServerTick();
             }
             
-            Extraplolate();
+            //Extraplolate();
         }
         void HandleServerTick() {
             if (!IsServer) return;
@@ -257,7 +261,7 @@ namespace Race
             
             if (bufferIndex == -1) return;
             SendToClientRpc(serverStateBuffer.Get(bufferIndex));
-            HandleExtrapolation(serverStateBuffer.Get(bufferIndex), CalculateLatencyInMillis(inputPayload));
+            //HandleExtrapolation(serverStateBuffer.Get(bufferIndex), CalculateLatencyInMillis(inputPayload));
         }
 
         static float CalculateLatencyInMillis(InputPayload inputPayload) => (DateTime.Now - inputPayload.timestamp).Milliseconds / 1000f;
@@ -324,6 +328,7 @@ namespace Race
         }
 
         bool ShouldReconcile() {
+            return false;
             bool isNewServerState = !lastServerState.Equals(default);
             bool isLastStateUndefinedOrDifferent = lastProcessedState.Equals(default) 
                                                    || !lastProcessedState.Equals(lastServerState);
@@ -342,6 +347,7 @@ namespace Race
             
             StatePayload rewindState = IsHost ? serverStateBuffer.Get(bufferIndex - 1) : lastServerState; // Host RPCs execute immediately, so we can use the last server state
             StatePayload clientState = IsHost ? clientStateBuffer.Get(bufferIndex - 1) : clientStateBuffer.Get(bufferIndex);
+            //if (!GameManager.Instance.allKartsGo)
             positionError = Vector3.Distance(rewindState.position, clientState.position);
 
             if (positionError > reconciliationThreshold) {

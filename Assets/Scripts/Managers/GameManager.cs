@@ -10,7 +10,7 @@ namespace Race
 
         public float raceTimer { get; private set; }
 
-        List<GameObject> ActiveCars; // host is always 0,
+        public List<GameObject> ActiveCars; // host is always 0,
 
         List<CarData> FinishResults; // host is always 0,
 
@@ -23,6 +23,9 @@ namespace Race
 
         public float startCount = 3.0f;
 
+        public bool gameEnd = false;
+
+        public bool allKartsGo = false;
 
 
 
@@ -48,6 +51,28 @@ namespace Race
         private void Update()
         {
             raceTimer += Time.deltaTime;
+
+
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                GameObject[] spawns = GameObject.FindGameObjectsWithTag("Respawn");
+                //GameManager.Instance.ActiveCars.Add(gameObject);
+
+                for (int i=0; i<players.Length; i++)
+                {
+                    players[i].transform.SetPositionAndRotation(spawns[i].transform.position, spawns[i].transform.rotation);
+                }
+
+                //spawns[0].gameObject.SetActive(false);
+                //tra = spawns[0].transform;
+                //spawnsList.Remove(spawns[0]);
+            }
+            /*if (!GameManager.Instance.allKartsGo && tra != null)
+            {
+                transform.SetPositionAndRotation(tra.position, tra.rotation);
+            }*/
         }
 
         public void AddActiveCar ( GameObject Car )
@@ -56,9 +81,16 @@ namespace Race
         }
         public void CarFinished(GameObject Car, float timer)
         {
+            
             Car.GetComponent<CarData>().finished = true;
             Car.GetComponent<CarData>().controlable = false;
+            gameEnd = true;
             return;
+        }
+
+        public void AllKartsGo()
+        {
+            allKartsGo = true;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Race
 {
@@ -50,6 +51,8 @@ namespace Race
 
         public void OnTriggerEnter(Collider other)
         {
+            if (GameManager.Instance.gameEnd) return;
+
             GameObject go = other.gameObject;
             CarData data = go.GetComponent<CarData>();
             float raceTimer = GameManager.Instance.raceTimer;
@@ -74,6 +77,7 @@ namespace Race
                 BlackList[data.currentTour].Add(go);
                 skip = true;
             }
+
 
             if (!skip 
                 && go.CompareTag("Player") 
