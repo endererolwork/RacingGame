@@ -222,8 +222,9 @@ namespace Race
             
             playerCamera.Priority = 100;
             playerAudioListener.enabled = true;
+
         }
-        public Transform tra;
+
         void Update() {
             networkTimer.Update(Time.deltaTime);
             reconciliationTimer.Tick(Time.deltaTime);
@@ -234,6 +235,7 @@ namespace Race
             if (Input.GetKeyDown(KeyCode.Q)) {
                 //transform.position += transform.forward * 20f;
             }
+
         }
 
         private void FixedUpdate()

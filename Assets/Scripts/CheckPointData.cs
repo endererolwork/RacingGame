@@ -70,7 +70,8 @@ namespace Race
                 }
                 if (data.currentTour == GameManager.Instance.maxTours)
                 {
-                    GameManager.Instance.CarFinished(go, raceTimer);
+                    //GameManager.Instance.CarFinished(go, raceTimer);
+                    data.finished = true;
                     return;
                 }
 

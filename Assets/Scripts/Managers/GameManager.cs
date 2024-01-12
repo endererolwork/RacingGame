@@ -8,6 +8,8 @@ namespace Race
     {
         public static GameManager Instance { get; private set; }
 
+        
+
         public float raceTimer { get; private set; }
 
         public List<GameObject> ActiveCars; // host is always 0,
@@ -26,8 +28,6 @@ namespace Race
         public bool gameEnd = false;
 
         public bool allKartsGo = false;
-
-
 
         // Start is called before the first frame update
         void Awake()
